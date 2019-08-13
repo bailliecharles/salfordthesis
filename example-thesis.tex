@@ -1,0 +1,154 @@
+% A Sample Thesis for the University of Salford
+% =============================================
+
+% Load the Salford Memoir Thesis class. By default (without options),
+% this produces a 1-1/2 spaced thesis in 11 point font without running
+% heads. Use package options singlespaced or doublespaced for single
+% or double line spacing. The default font is tgheros, with options for times and palatino.
+% Use package option headers if you want running heads. Use option fullpage if you want the text
+% to occupy all allowable space (1 inch margins all around), or option
+% manuscript if you want a page layout suitable for reviewing and
+% proof reading. Option manuscript selects 12 pt type, doublespaced,
+% approx. 25 lines per page, with approx. 72 characters per line. You
+% may want to remove the option for the version you file in the Vault;
+% it looks nicer and is a bit more compact. You can also use any
+% options that the memoir class recognizes, such as 10pt for 10 point
+% font, 11pt for 11 point font, 12pt for 12 point type,
+% etc. Documentation of the memoir package can be found at
+% https://ctan.org/pkg/memoir?lang=en
+
+\documentclass[tgheros,headers,manuscript,11pt]{salford}
+
+\usepackage{lineno}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\newtheorem{thm}{Theorem}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition} % please number all of them together!
+
+\usepackage{microtype}
+
+\usepackage[dvipsnames]{xcolor}
+
+% Make the Chapter title pages have a larger font than the default - looks better if you have short chapter titles. 
+% Change the nuber values here
+\makeatletter
+\newcommand\GIANT{\@setfontsize\Huge{20}{0}}
+\makeatother  
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\GIANT}
+
+
+\usepackage[colorlinks,allcolors=Black]{hyperref} 
+% For black links, 
+%\usepackage[hidelinks]{hyperref}
+
+\usepackage{url} % for better urls
+\PassOptionsToPackage{hyphens,spaces,obeyspaces}{url}\usepackage{hyperref}
+
+% If you prefer hyperref's boxes around links (which don't print), you
+% can also change their color. With boxes around links, you probably
+% don't want everything in the table of contents to be a link, so we
+% only make the page numbers links.
+% \usepackage[allbordercolors=Periwinkle,linktocpage]{hyperref}
+
+% The table of contents in your PDF reader's sidebar is just titles by
+% default, but it's nice to also have chapter and section numbers for
+% easy navigation.
+\usepackage[numbered]{bookmark}
+
+\usepackage{textcomp}
+
+\usepackage{color, colortbl} %coloured tables http://latexcolor.com/
+
+\usepackage[final]{pdfpages}
+
+\usepackage{setspace}
+
+\usepackage{adjustbox}
+
+\usepackage{multirow}
+
+\usepackage{graphicx}
+
+\usepackage[helvet]{sfmath} % sans serif math fonts - not sure why tgheros not applied in ???
+
+% set up salford ELS geometry
+\usepackage[left=3.5cm,right=2cm, bottom=2.5cm, headsep=40pt]{geometry}
+\setlength\tabcolsep{5pt}
+
+\usepackage{siunitx,booktabs,array,calc,caption} % for complicated tables - see chapter 2 examlple
+
+\usepackage{longtable}
+
+\usepackage{lscape}
+
+\usepackage{natbib}
+\newcommand\cites[1]{\citeauthor{#1}'s\ (\citeyear{#1})} % adds possessive citation \cites{}
+\bibpunct[, ]{(}{)}{;}{a}{,}{,}
+
+% If you want to hide some sections from toc
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+% Now we put in the information for the thesis title page.
+\author{Isaac Asimov}
+\title{Foundation}
+\gradyear{1951}
+\monthname{August}
+
+% add title and author to metadata
+\hypersetup{pdfinfo={Title={\thetitle},Author={\theauthor}}}
+
+% If you want memoir to produce endnotes, turn them on here
+\makepagenote
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\linenumbers %remove for final draft but good for softbound submission
+
+\frontmatter
+
+% titlepage.tex just makes the titlepage
+
+\include{titlepage}
+
+% frontmatter.tex contains the abstract, preface, acknowledgments, and
+% the commands to produce the table of contents, list of tables, etc.
+
+\include{frontmatter}
+
+% The main matter of the thesis contains the actual content, separated
+% into chapters. Comment and uncomment these (and frontmatter, titlepage etc.)
+% to include or exclude them, for example if you're just sedning your supervisor
+% one chapter 
+
+\mainmatter
+
+\include{chapter1}
+\include{chapter2}
+%\include{chapter3} 
+%\include{chapter4}
+%\include{chapter5}
+
+% The back matter includes commands to produce endnotes, index,
+% glossary, bibiliography, and the like.
+
+\backmatter
+
+\include{backmatter}
+
+% The appendix contains material that would clutter up the main
+% text. Remove it if you don't have an appendix.
+
+\appendix
+
+\include{appendix}
+
+\end{document}
