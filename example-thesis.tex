@@ -41,13 +41,8 @@
 \titleformat{\chapter}[display]
 {\normalfont\bfseries}{}{0pt}{\GIANT}
 
-
-\usepackage[colorlinks,allcolors=Black]{hyperref} 
-% For black links, 
-%\usepackage[hidelinks]{hyperref}
-
-\usepackage{url} % for better urls
-\PassOptionsToPackage{hyphens,spaces,obeyspaces}{url}\usepackage{hyperref}
+%\usepackage{url}
+\PassOptionsToPackage{hyphens,spaces,obeyspaces}{url}\usepackage{url}
 
 % If you prefer hyperref's boxes around links (which don't print), you
 % can also change their color. With boxes around links, you probably
@@ -62,7 +57,7 @@
 
 \usepackage{textcomp}
 
-\usepackage{color, colortbl} %coloured tables http://latexcolor.com/
+\usepackage{colortbl} %coloured tables http://latexcolor.com/
 
 \usepackage[final]{pdfpages}
 
@@ -89,6 +84,10 @@
 \usepackage{natbib}
 \newcommand\cites[1]{\citeauthor{#1}'s\ (\citeyear{#1})} % adds possessive citation \cites{}
 \bibpunct[, ]{(}{)}{;}{a}{,}{,}
+
+\usepackage[colorlinks,allcolors=Black]{hyperref} 
+% For black links, 
+%\usepackage[hidelinks]{hyperref}
 
 % If you want to hide some sections from toc
 \newcommand{\nocontentsline}[3]{}
